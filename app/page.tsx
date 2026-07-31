@@ -67,11 +67,23 @@ export default function HomePage() {
       <section className="hero">
         <div className="hero-pattern"></div>
         <div className="wrap">
-          <div className="hero-crumb">
-            <Link href="/">Home</Link> <span>›</span> <span>Power Book</span>
+          <div className="hero-downloads">
+            <span className="hd-label">Downloads</span>
+            <a href="/downloads/powerbook-catalogue.pdf" download className="hd">
+              <DownloadIcon /> Catalogue (PDF)
+            </a>
+            <a href="/downloads/powerbook-catalogue-pricing.pdf" download className="hd">
+              <DownloadIcon /> Price list (PDF)
+            </a>
+            <a href="/downloads/powerbook-photos.zip" download className="hd">
+              <DownloadIcon /> All product photos
+            </a>
+            <a href="/downloads/powerbook-videos.zip" download className="hd">
+              <DownloadIcon /> All videos
+            </a>
           </div>
           <div className="hero-grid">
-            <div data-reveal>
+            <div className="hero-left">
               <div className="hero-title">
                 <h1>Power Book</h1>
                 <span className="hero-pill">PREMIUM</span>
@@ -105,34 +117,7 @@ export default function HomePage() {
                   {greenDot} WhatsApp us
                 </a>
               </div>
-              <div className="hero-downloads">
-                <span className="hd-label">Downloads</span>
-                <a href="/downloads/powerbook-catalogue.pdf" download className="hd">
-                  <DownloadIcon /> Catalogue (PDF)
-                </a>
-                <a href="/downloads/powerbook-catalogue-pricing.pdf" download className="hd">
-                  <DownloadIcon /> Price list (PDF)
-                </a>
-                <a href="/downloads/powerbook-photos.zip" download className="hd">
-                  <DownloadIcon /> All product photos
-                </a>
-                <a href="/downloads/powerbook-videos.zip" download className="hd">
-                  <DownloadIcon /> All videos
-                </a>
-              </div>
-            </div>
-            <div className="hero-media" data-reveal>
-              <div className="hero-frame">
-                <video
-                  src="/assets/demo-lifestyle.mp4"
-                  poster="/assets/product-stand.jpg"
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                />
-              </div>
-              <div className="hero-stats">
+              <div className="hero-stats" style={{marginTop:"auto",paddingTop:28}}>
                 <div className="st">
                   <b>10,000</b>
                   <span>mAh battery</span>
@@ -147,7 +132,20 @@ export default function HomePage() {
                 </div>
               </div>
             </div>
+            <div className="hero-media" data-reveal>
+              <div className="hero-frame">
+                <video
+                  src="/assets/demo-lifestyle.mp4"
+                  poster="/assets/product-stand.jpg"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                />
+              </div>
+            </div>
           </div>
+
         </div>
         <div className="hero-wave">
           <svg viewBox="0 0 1440 100" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">

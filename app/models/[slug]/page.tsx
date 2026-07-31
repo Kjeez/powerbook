@@ -7,7 +7,7 @@ import ContactBand from "@/components/ContactBand";
 import FloatingCTA from "@/components/FloatingCTA";
 import ModelCard from "@/components/ModelCard";
 import ProductGallery from "@/components/ProductGallery";
-import { CallIcon, CheckIcon } from "@/components/icons";
+import { CallIcon, CheckIcon, DownloadIcon } from "@/components/icons";
 import { SITE, wa } from "@/lib/site";
 import {
   BASE_INCLUDED,
@@ -109,6 +109,25 @@ export default function ModelPage({ params }: { params: { slug: string } }) {
                 <a href={`tel:${SITE.phoneFull}`} className="btn btn-red">
                   <CallIcon /> Call to order
                 </a>
+              </div>
+
+              {/* Downloads */}
+              <div className="pd-downloads">
+                <span className="pd-dl-label">Downloads</span>
+                <div className="pd-dl-row">
+                  <a href="/downloads/powerbook-catalogue.pdf" download className="pd-dl">
+                    <DownloadIcon /> Catalogue (PDF)
+                  </a>
+                  <a href="/downloads/powerbook-catalogue-pricing.pdf" download className="pd-dl">
+                    <DownloadIcon /> Price list (PDF)
+                  </a>
+                  <a href="/downloads/powerbook-photos.zip" download className="pd-dl">
+                    <DownloadIcon /> All product photos
+                  </a>
+                  <a href="/downloads/powerbook-videos.zip" download className="pd-dl">
+                    <DownloadIcon /> All videos
+                  </a>
+                </div>
               </div>
               {m.branded ? (
                 <p className="pd-note" style={{ color: "var(--red)" }}>

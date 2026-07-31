@@ -32,7 +32,63 @@ export default function Header() {
 
         {/* Desktop nav */}
         <nav className="nav-links">
-          <Link href="/#variants">Variants</Link>
+          <div className="nav-item">
+            <Link href="/#variants" className="nav-link">
+              Variants <Caret />
+            </Link>
+            <div className="mega" style={{ width: "min(860px, 92vw)" }}>
+              <div className="mega-grid" style={{ gridTemplateColumns: "repeat(3,1fr)" }}>
+                {/* Wireless Charging — non-branded only */}
+                <div className="mega-col">
+                  <h5>⚡ Wireless Charging</h5>
+                  {MODELS.filter((m) => !m.branded && m.extras.some((e) => e.toLowerCase().includes("wireless"))).slice(0, 6).map((m) => (
+                    <Link href={`/models/${m.slug}`} key={m.slug}>{m.name}</Link>
+                  ))}
+                </div>
+                {/* Fingerprint Lock */}
+                <div className="mega-col">
+                  <h5>🔒 Fingerprint Lock</h5>
+                  {MODELS.filter((m) => m.extras.some((e) => e.toLowerCase().includes("fingerprint"))).map((m) => (
+                    <Link href={`/models/${m.slug}`} key={m.slug}>{m.name}</Link>
+                  ))}
+                </div>
+                {/* Reading Lamp */}
+                <div className="mega-col">
+                  <h5>💡 Reading Lamp</h5>
+                  {MODELS.filter((m) => m.extras.some((e) => e.toLowerCase().includes("lamp"))).map((m) => (
+                    <Link href={`/models/${m.slug}`} key={m.slug}>{m.name}</Link>
+                  ))}
+                </div>
+                {/* Glow Logo */}
+                <div className="mega-col">
+                  <h5>✨ Glow Logo</h5>
+                  {MODELS.filter((m) => m.extras.some((e) => e.toLowerCase().includes("glow"))).slice(0, 6).map((m) => (
+                    <Link href={`/models/${m.slug}`} key={m.slug}>{m.name}</Link>
+                  ))}
+                </div>
+                {/* Pen Drive */}
+                <div className="mega-col">
+                  <h5>💾 Pen Drive</h5>
+                  {MODELS.filter((m) => m.extras.some((e) => e.toLowerCase().includes("pen drive"))).slice(0, 6).map((m) => (
+                    <Link href={`/models/${m.slug}`} key={m.slug}>{m.name}</Link>
+                  ))}
+                </div>
+                {/* Gift Sets */}
+                <div className="mega-col">
+                  <h5>🎁 Gift Sets</h5>
+                  {MODELS.filter((m) => m.category === "Gift Sets").map((m) => (
+                    <Link href={`/models/${m.slug}`} key={m.slug}>{m.name}</Link>
+                  ))}
+                </div>
+              </div>
+              <div className="mega-foot">
+                <span style={{ fontSize: ".85rem", color: "var(--g500)" }}>
+                  Browse by feature — all models available in L1–L4 variants
+                </span>
+                <Link href="/#variants">View all variants →</Link>
+              </div>
+            </div>
+          </div>
           <div className="nav-item">
             <Link href="/#collection" className="nav-link">
               Models <Caret />
@@ -93,7 +149,7 @@ export default function Header() {
       {open && (
         <div className="mobile-menu">
           <Link href="/#variants" onClick={close}>
-            Variants
+            Variants ›
           </Link>
           <button
             className={`m-btn${modelsOpen ? " open" : ""}`}
