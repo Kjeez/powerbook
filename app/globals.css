@@ -294,6 +294,9 @@ h1,h2,h3{font-weight:700;line-height:1.1;letter-spacing:-.02em}
   .pd-info{position:static}
   .op-grid{grid-template-columns:1fr 1fr}
   .foot-grid{grid-template-columns:1fr 1fr}
+  /* Hero: video above text on mobile */
+  .hero-media{order:-1}
+  .hero-left{padding-top:0}
 }
 /* Collapse the desktop nav into a hamburger + mobile menu */
 @media(max-width:920px){
