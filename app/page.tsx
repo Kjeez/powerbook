@@ -4,6 +4,7 @@ import Footer from "@/components/Footer";
 import ContactBand from "@/components/ContactBand";
 import FloatingCTA from "@/components/FloatingCTA";
 import ModelCard from "@/components/ModelCard";
+import PopupBanner from "@/components/PopupBanner";
 import {
   ArrowIcon,
   BatteryIcon,
@@ -62,6 +63,7 @@ const FEATURES = [
 export default function HomePage() {
   return (
     <>
+      <PopupBanner />
       <Header />
 
       <section className="hero">
