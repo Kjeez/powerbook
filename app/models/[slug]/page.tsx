@@ -37,9 +37,11 @@ export default function ModelPage({ params }: { params: { slug: string } }) {
   if (!m) notFound();
 
   const walink = wa(`Hi Power Book, I'd like to enquire about the ${m.name} model.`);
-  const thumbs = Array.from(
-    new Set([m.img, "feat-open.jpg", "feat-usb.jpg", "product-stand.jpg", "feat-pockets.jpg"])
-  ).slice(0, 5);
+  const thumbs = m.gallery !== undefined
+    ? Array.from(new Set([m.img, ...m.gallery]))
+    : Array.from(
+        new Set([m.img, "feat-open.jpg", "feat-usb.jpg", "product-stand.jpg", "feat-pockets.jpg"])
+      ).slice(0, 5);
 
   const hasWireless = m.variants.some((v) => v === 3 || v === 4);
   const hasPen = m.variants.some((v) => v === 2 || v === 4);
