@@ -5,6 +5,7 @@ import ContactBand from "@/components/ContactBand";
 import FloatingCTA from "@/components/FloatingCTA";
 import ModelCard from "@/components/ModelCard";
 import PopupBanner from "@/components/PopupBanner";
+import HeroVideo from "@/components/HeroVideo";
 import {
   ArrowIcon,
   BatteryIcon,
@@ -136,14 +137,7 @@ export default function HomePage() {
             </div>
             <div className="hero-media" data-reveal>
               <div className="hero-frame">
-                <video
-                  src="/assets/demo-lifestyle.mp4"
-                  poster="/assets/product-stand.jpg"
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                />
+                <HeroVideo />
               </div>
             </div>
           </div>
