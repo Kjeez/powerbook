@@ -7,7 +7,8 @@ import ContactBand from "@/components/ContactBand";
 import FloatingCTA from "@/components/FloatingCTA";
 import ModelCard from "@/components/ModelCard";
 import ProductGallery from "@/components/ProductGallery";
-import { CallIcon, CheckIcon, DownloadIcon } from "@/components/icons";
+import { CallIcon, CheckIcon } from "@/components/icons";
+import DownloadLinks from "@/components/DownloadLinks";
 import { SITE, wa } from "@/lib/site";
 import {
   BASE_INCLUDED,
@@ -15,6 +16,7 @@ import {
   VARIANTS,
   getModel,
   inr,
+  modelMedia,
   priceLabel,
   relatedModels,
 } from "@/lib/models";
@@ -37,11 +39,7 @@ export default function ModelPage({ params }: { params: { slug: string } }) {
   if (!m) notFound();
 
   const walink = wa(`Hi Power Book, I'd like to enquire about the ${m.name} model.`);
-  const thumbs = m.gallery !== undefined
-    ? Array.from(new Set([m.img, ...m.gallery]))
-    : Array.from(
-        new Set([m.img, "feat-open.jpg", "feat-usb.jpg", "product-stand.jpg", "feat-pockets.jpg"])
-      ).slice(0, 5);
+  const media = modelMedia(m);
 
   const hasWireless = m.variants.some((v) => v === 3 || v === 4);
   const hasPen = m.variants.some((v) => v === 2 || v === 4);
@@ -72,7 +70,7 @@ export default function ModelPage({ params }: { params: { slug: string } }) {
           </div>
           <div className="pd-grid">
             <div data-reveal>
-              <ProductGallery images={thumbs} alt={`Power Book ${m.name}`} />
+              <ProductGallery files={media} alt={`Power Book ${m.name}`} />
             </div>
             <div className="pd-info" data-reveal>
               <span className="pd-code">
@@ -117,18 +115,7 @@ export default function ModelPage({ params }: { params: { slug: string } }) {
               <div className="pd-downloads">
                 <span className="pd-dl-label">Downloads</span>
                 <div className="pd-dl-row">
-                  <a href="/downloads/powerbook-catalogue.pdf" download className="pd-dl">
-                    <DownloadIcon /> Catalogue (PDF)
-                  </a>
-                  <a href="/downloads/powerbook-catalogue-pricing.pdf" download className="pd-dl">
-                    <DownloadIcon /> Price list (PDF)
-                  </a>
-                  <a href="/downloads/powerbook-photos.zip" download className="pd-dl">
-                    <DownloadIcon /> All product photos
-                  </a>
-                  <a href="/downloads/powerbook-videos.zip" download className="pd-dl">
-                    <DownloadIcon /> All videos
-                  </a>
+                  <DownloadLinks variant="page" />
                 </div>
               </div>
               {m.branded ? (

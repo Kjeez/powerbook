@@ -32,69 +32,22 @@ export default function Header() {
 
         {/* Desktop nav */}
         <nav className="nav-links">
-          <div className="nav-item">
-            <Link href="/#variants" className="nav-link">
-              Variants <Caret />
-            </Link>
-            <div className="mega" style={{ width: "min(860px, 92vw)" }}>
-              <div className="mega-grid" style={{ gridTemplateColumns: "repeat(3,1fr)" }}>
-                <div className="mega-col">
-                  <h5>K-Series</h5>
-                  {MODELS.map((m) => (
-                    <Link href={`/models/${m.slug}`} key={m.slug}>{m.name}</Link>
-                  ))}
-                </div>
-              </div>
-              <div className="mega-foot">
-                <span style={{ fontSize: ".85rem", color: "var(--g500)" }}>
-                  K1–K14 — all models available in L1–L4 variants
-                </span>
-                <Link href="/#variants">View all variants →</Link>
-              </div>
-            </div>
-          </div>
-          <div className="nav-item">
-            <Link href="/#collection" className="nav-link">
-              Models <Caret />
-            </Link>
-            <div className="mega">
-              <div className="mega-grid">
-                {CATEGORIES.map((cat) => {
-                  const items = MODELS.filter((m) => m.category === cat.name);
-                  if (!items.length) return null;
-                  return (
-                    <div className="mega-col" key={cat.name}>
-                      <h5>{cat.name}</h5>
-                      {items.map((m) => (
-                        <Link href={`/models/${m.slug}`} key={m.slug}>
-                          {m.name}
-                        </Link>
-                      ))}
-                    </div>
-                  );
-                })}
-              </div>
-              <div className="mega-foot">
-                <span className="muted" style={{ fontSize: ".85rem", color: "var(--g500)" }}>
-                  4 variants (L1–L4) · K1–K14
-                </span>
-                <Link href="/#collection">View all models →</Link>
-              </div>
-            </div>
-          </div>
+          <Link href="/#featured">Products</Link>
+          <Link href="/#features">Why Power Book</Link>
           <Link href="/#custom">Corporate Gifting</Link>
           <Link href="/#gallery">Gallery</Link>
           <Link href="/#contact">Contact</Link>
         </nav>
 
         <div className="nav-cta">
-          <a href={`tel:${SITE.phoneFull}`} className="nav-phone">
-            <CallIcon />
-            {SITE.phoneDisplay}
+          <a
+            href={wa("Hi Power Book, I would like to enquire.")}
+            className="btn btn-red btn-sm"
+            target="_blank"
+            rel="noopener"
+          >
+            WhatsApp Us
           </a>
-          <Link href="/#contact" className="btn btn-red btn-sm">
-            Contact us
-          </Link>
         </div>
 
         <button
@@ -112,8 +65,11 @@ export default function Header() {
       {/* Mobile menu */}
       {open && (
         <div className="mobile-menu">
-          <Link href="/#variants" onClick={close}>
-            Variants ›
+          <Link href="/#featured" onClick={close}>
+            Products
+          </Link>
+          <Link href="/#features" onClick={close}>
+            Why Power Book
           </Link>
           <button
             className={`m-btn${modelsOpen ? " open" : ""}`}

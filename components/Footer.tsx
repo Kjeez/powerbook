@@ -3,7 +3,7 @@ import { SITE, wa } from "@/lib/site";
 
 export default function Footer() {
   return (
-    <footer className="site-footer grid-overlay">
+    <footer className="site-footer">
       <div className="wrap foot-grid">
         <div>
           <Link href="/" className="brand" aria-label="Power Book home">

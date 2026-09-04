@@ -3,33 +3,24 @@ import { CallIcon } from "./icons";
 
 export default function ContactBand() {
   return (
-    <section id="contact" className="contact-band">
-      <div className="grid-overlay"></div>
+    <section id="contact" className="cta">
       <div className="wrap" data-reveal>
-        <a href={`mailto:${SITE.email}`} className="email">
-          {SITE.email}
-        </a>
-        <div className="divider"></div>
-        <div className="lines">
-          <p>
-            Mobile: <a href={`tel:${SITE.phoneFull}`}>+91 {SITE.phoneDisplay}</a>
-          </p>
-          <p>
-            Landline: <a href={`tel:${SITE.landlineTel}`}>{SITE.landline}</a>
-          </p>
-        </div>
-        <div className="cbtns">
-          <a href={`tel:${SITE.phoneFull}`} className="btn btn-white">
-            <CallIcon /> Call now
+        <h2>Let&apos;s create your Power Book</h2>
+        <p>
+          Single pieces or bulk corporate gifting — we&apos;ll help you pick a variant, choose a
+          model and add your branding.
+        </p>
+        <div className="btns">
+          <a href={`tel:${SITE.phoneFull}`} className="btn btn-red">
+            <CallIcon /> Call {SITE.phoneDisplay}
           </a>
           <a
             href={wa("Hi Power Book, I would like to enquire.")}
-            className="btn btn-dark"
+            className="btn btn-wa"
             target="_blank"
             rel="noopener"
           >
-            <span className="dot" style={{ width: 8, height: 8, borderRadius: "50%", background: "#3ad06a", display: "inline-block" }}></span>{" "}
-            WhatsApp
+            <span className="dot"></span> WhatsApp Us
           </a>
         </div>
       </div>
