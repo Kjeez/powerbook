@@ -1,25 +1,17 @@
-import archiver from "archiver";
+import fs from "fs";
 import path from "path";
-import { listMedia, mediaDir } from "./media-files";
+import { zipSync } from "fflate";
+import { listMedia } from "./media-files";
 
 export function zipMediaResponse(kind: "photos" | "videos", filename: string): Response {
-  const files = listMedia(kind);
-  const dir = mediaDir();
-
-  const stream = new ReadableStream({
-    start(controller) {
-      const archive = archiver("zip", { zlib: { level: 1 } });
-      archive.on("data", (chunk: Buffer) => controller.enqueue(new Uint8Array(chunk)));
-      archive.on("end", () => controller.close());
-      archive.on("error", (err) => controller.error(err));
-      for (const file of files) {
-        archive.file(path.join(dir, file), { name: file });
-      }
-      void archive.finalize();
-    },
-  });
-
-  return new Response(stream, {
+  const files: Record<string, Uint8Array> = {};
+  for (const entry of listMedia(kind)) {
+    const folder = path.basename(path.dirname(entry.abs));
+    const zipName = files[entry.name] ? `${folder}/${entry.name}` : entry.name;
+    files[zipName] = fs.readFileSync(entry.abs);
+  }
+  const zipped = zipSync(files, { level: 1 });
+  return new Response(Buffer.from(zipped), {
     headers: {
       "Content-Type": "application/zip",
       "Content-Disposition": `attachment; filename="${filename}"`,

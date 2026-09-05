@@ -19,6 +19,7 @@ import {
 } from "@/components/icons";
 import { SITE, wa } from "@/lib/site";
 import { CATEGORIES, MODELS, VARIANTS, VariantId, inr } from "@/lib/models";
+import { NEW_STUDIO_VIDEOS, newStudioVideoUrl } from "@/lib/studio-videos";
 
 const greenDot = (
   <span
@@ -297,7 +298,7 @@ export default function HomePage() {
           <div className="section-head" data-reveal>
             <span className="eyebrow">THE FILM</span>
             <h2 className="serif">See Power Book in one piece</h2>
-            <p className="lead">Studio product film — tap to play with sound.</p>
+            <p className="lead">Studio product films — tap to play with sound. All clips are in Download all videos.</p>
           </div>
           <div className="film-frame" data-reveal>
             <video
@@ -307,6 +308,14 @@ export default function HomePage() {
               preload="metadata"
               poster="/assets/hero-desktop.jpg"
             />
+          </div>
+          <div className="film-grid" data-reveal>
+            {NEW_STUDIO_VIDEOS.map((name, i) => (
+              <div className="film-frame" key={name}>
+                <video src={newStudioVideoUrl(name)} controls playsInline preload="metadata" />
+                <p className="film-cap">Clip {i + 1}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
