@@ -1,9 +1,5 @@
-import { zipMediaResponse } from "@/lib/zip-media";
-
-export const dynamic = "force-dynamic";
-export const runtime = "nodejs";
-export const maxDuration = 300;
-
-export function GET() {
-  return zipMediaResponse("photos", "powerbook-photos.zip");
+// Old server-side zip endpoint. The zip is now built in the browser from static
+// files (see components/DownloadAllButton.tsx); old links are sent to the home page.
+export function GET(req: Request) {
+  return Response.redirect(new URL("/", req.url), 308);
 }
